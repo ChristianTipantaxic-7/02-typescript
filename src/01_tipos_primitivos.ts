@@ -26,26 +26,27 @@
 // - `promedioObjetivo` (number): Debe ser un número decimal (ej. 9.85).
 // - `estaMatriculado` (boolean): Debe ser true.
 
-export const nombreEstudiante: string = "";       // 👈 TODO: Escribe tu nombre aquí
-export const edadEstudiante: number = 0;          // 👈 TODO: Escribe tu edad aquí
-export const promedioObjetivo: number = 0;        // 👈 TODO: Escribe tu promedio objetivo
-export let estaMatriculado: boolean = false;    // 👈 TODO: Cambia a true
+export const nombreEstudiante: string = "Christian Tipantaxi";       // 👈 TODO: Escribe tu nombre aquí
+export const edadEstudiante: number = 17;          // 👈 TODO: Escribe tu edad aquí
+export const promedioObjetivo: number = 9.10;        // 👈 TODO: Escribe tu promedio objetivo
+export let estaMatriculado: boolean = true;    // 👈 TODO: Cambia a true
 
 /**
- * TODO: Implementa la función `obtenerResumenPersonal` usando Template Strings (${...}).
+ * CHECK: Implementa la función `obtenerResumenPersonal` usando Template Strings (${...}).
  * Debe retornar una cadena con este formato exacto:
  * `👤 Estudiante: NOMBRE | 🎂 Edad: EDAD años | 🎯 Meta: PROMEDIO/10 | 📋 Estado: MATRICULADO` (o NO_MATRICULADO si es false)
  */
 export function obtenerResumenPersonal(): string {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return "":
-  return "";
+  const estado = estaMatriculado ? "MATRICULADO" : "NO_MATRICULADO";
+
+  return `👤 Estudiante: ${nombreEstudiante} | 🎂 Edad: ${edadEstudiante} años | 🎯 Meta: ${promedioObjetivo}/10 | 📋 Estado: ${estado}`;
 }
 
 // ============================================================================
 // PASO 2: Función para Calcular el Promedio
 // ============================================================================
 /**
- * TODO: Implementa la función `calcularPromedio`.
+ * CHECK: Implementa la función `calcularPromedio`.
  * Debe:
  * 1. Recibir `notas`: un arreglo inmutable de números (`readonly number[]`).
  * 2. Si el arreglo está vacío, retornar `0`.
@@ -54,15 +55,24 @@ export function obtenerResumenPersonal(): string {
  *    (Pista: usa Number((suma / notas.length).toFixed(2)))
  */
 export function calcularPromedio(notas: readonly number[]): number {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return 0:
-  return 0;
+  if (notas.length === 0) {
+    return 0;
+  }
+
+  let suma = 0;
+
+  for (const nota of notas) {
+    suma += nota;
+  }
+
+  return Number((suma / notas.length).toFixed(2));
 }
 
 // ============================================================================
 // PASO 3: Formateador de Ficha Técnica
 // ============================================================================
 /**
- * TODO: Implementa la función `formatearFichaEstudiante`.
+ * CHECK: Implementa la función `formatearFichaEstudiante`.
  * Parámetros requeridos:
  *  - nombre (string)
  *  - edad (number)
@@ -78,6 +88,7 @@ export function formatearFichaEstudiante(
   paralelo: "E1" | "E2",
   activo: boolean
 ): string {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return "":
-  return "";
+  const estado = activo ? "MATRICULADO" : "RETIRADO";
+
+  return `[FICHA UETS] ${nombre.toUpperCase()} (${edad} años) - Paralelo: ${paralelo} - Estado: ${estado}`;
 }
