@@ -22,15 +22,19 @@
 // PASO 1: Type Narrowing Básico con typeof
 // ============================================================================
 /**
- * TODO: Implementa la función `formatearIdentificador`.
+ * CHECK: Implementa la función `formatearIdentificador`.
  * - Recibe un `id` que puede ser `string` o `number`.
  * - Si es `string`, retornar: `ID-ALFANUMERICO-` seguido del texto en MAYÚSCULAS.
  * - Si es `number`, retornar: `ID-NUMERICO-#` seguido del número relleno con ceros a 6 dígitos (ej: 45 -> "000045").
  *   (Pista: usa id.toFixed(0).padStart(6, "0"))
  */
 export function formatearIdentificador(id: string | number): string {
-  // 👇 TODO: Escribe tu lógica con if (typeof id === "string") y reemplaza el return "":
-  return "";
+  // 👇 CHECK: Escribe tu lógica con if (typeof id === "string") y reemplaza el return "":
+  if (typeof id === "string") {
+    return `ID-ALFANUMERICO-${id.toUpperCase()}`;
+  }
+
+  return `ID-NUMERICO-#${id.toFixed(0).padStart(6, "0")}`;
 }
 
 // ============================================================================
@@ -60,13 +64,22 @@ export type EstadoPantalla<T> =
   | EstadoError;
 
 /**
- * TODO: Implementa `renderizarEstadoUI`.
+ * CHECK: Implementa `renderizarEstadoUI`.
  * Utiliza un `switch (estado.status)`:
  * - Si status === "LOADING": Retornar `⏳ Cargando datos (${estado.porcentaje}%)...`
  * - Si status === "SUCCESS": Retornar `🎉 Datos cargados con éxito a las ${estado.hora}`
  * - Si status === "ERROR": Retornar `❌ Error ${estado.codigo}: ${estado.mensaje}`
  */
 export function renderizarEstadoUI<T>(estado: EstadoPantalla<T>): string {
-  // 👇 TODO: Escribe tu switch(estado.status) aquí y reemplaza el return "":
-  return "";
+  // 👇 CHECK: Escribe tu switch(estado.status) aquí y reemplaza el return "":
+  switch (estado.status) {
+    case "LOADING":
+      return `⏳ Cargando datos (${estado.porcentaje}%)...`;
+
+    case "SUCCESS":
+      return `🎉 Datos cargados con éxito a las ${estado.hora}`;
+
+    case "ERROR":
+      return `❌ Error ${estado.codigo}: ${estado.mensaje}`;
+  }
 }
